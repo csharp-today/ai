@@ -11,4 +11,6 @@ pool:
 
 steps:
 - script: powershell .\build.ps1
+  env:
+    FeedSecret: $(FeedSecret)
   displayName: Run Nuke
