@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CSharpToday.Nuke.Useful" Version="0.1.12" />
+    <PackageReference Include="CSharpToday.Nuke.Useful" Version="0.1.13" />
     <PackageReference Include="Nuke.Common" Version="0.20.1" />
     <PackageReference Include="GitVersion.CommandLine.DotNetCore" Version="4.0.1-beta1-49" />
   </ItemGroup>
