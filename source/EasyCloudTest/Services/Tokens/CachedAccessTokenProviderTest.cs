@@ -36,7 +36,7 @@ namespace EasyCloudTest.Services.Tokens
         }
 
         [TestMethod]
-        public async Task Call_Base_Provider_Twice()
+        public async Task Call_Base_Provider_Twice_After_Expiration()
         {
             // Arrange
             var baseProvider = Get<IAccessTokenProvider>();
@@ -56,6 +56,30 @@ namespace EasyCloudTest.Services.Tokens
             var token1 = await Get<CachedAccessTokenProvider>().GetAccessTokenAsync(ExpectedKey);
             timeProvider.GetTime().Returns(DateTime.Now);
             var token2 = await Get<CachedAccessTokenProvider>().GetAccessTokenAsync(ExpectedKey);
+
+            // Assert
+            token1.ShouldBe(ExpectedToken);
+            token2.ShouldBe(ExpectedToken);
+            callCount.ShouldBe(2);
+        }
+
+        [TestMethod]
+        public async Task Call_Base_Provider_Twice_For_Different_Keys()
+        {
+            // Arrange
+            var baseProvider = Get<IAccessTokenProvider>();
+
+            const string ExpectedToken = "token";
+            int callCount = 0;
+            baseProvider.GetAccessTokenAsync(null).ReturnsForAnyArgs(callInfo =>
+            {
+                callCount++;
+                return ExpectedToken;
+            });
+
+            // Act
+            var token1 = await Get<CachedAccessTokenProvider>().GetAccessTokenAsync("key1");
+            var token2 = await Get<CachedAccessTokenProvider>().GetAccessTokenAsync("key2");
 
             // Assert
             token1.ShouldBe(ExpectedToken);
