@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace EasyCloud.Services.Tokens
 {
-    internal class AccessTokenProvider : IAccessTokenProvider
+    public class AccessTokenProvider : IAccessTokenProvider
     {
         private readonly string _url;
 

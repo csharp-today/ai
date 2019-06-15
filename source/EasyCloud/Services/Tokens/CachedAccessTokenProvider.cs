@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace EasyCloud.Services.Tokens
 {
-    internal class CachedAccessTokenProvider : IAccessTokenProvider
+    public class CachedAccessTokenProvider : IAccessTokenProvider
     {
         private readonly IAccessTokenProvider _accessTokenProvider;
         private readonly ITimeProvider _timeProvider;
