@@ -1,6 +1,6 @@
 ﻿namespace EasyCloud.Services
 {
-    public class CognitiveService : ICognitiveService
+    internal class CognitiveService : ICognitiveService
     {
         private readonly string _key;
 

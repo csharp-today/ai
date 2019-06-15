@@ -1,10 +1,9 @@
-﻿using System;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace EasyCloud.Services
+namespace EasyCloud.Services.Tokens
 {
-    public class AccessTokenProvider : IAccessTokenProvider
+    internal class AccessTokenProvider : IAccessTokenProvider
     {
         private readonly string _url;
 

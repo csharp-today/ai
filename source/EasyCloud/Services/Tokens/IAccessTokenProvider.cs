@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace EasyCloud.Services
+namespace EasyCloud.Services.Tokens
 {
     public interface IAccessTokenProvider
     {
