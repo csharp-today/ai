@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace EasyCloud.Services.Tokens
 {
-    public class CachedAccessTokenProvider : IAccessTokenProvider
+    public class CachedAccessTokenProvider : ICachedAccessTokenProvider
     {
         private readonly IAccessTokenProvider _accessTokenProvider;
         private readonly IDictionary<string, (string token, DateTime expiration)> _cache = new Dictionary<string, (string, DateTime)>();
