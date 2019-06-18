@@ -3,6 +3,13 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>preview</LangVersion>
+
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/csharp-today/ai.git</RepositoryUrl>
+
+    <Company>Mariusz Bojkowski</Company>
+    <Authors>Mariusz Bojkowski</Authors>
+    <Description>The library is made to simplify working with AI cognitive service in Azure</Description>
   </PropertyGroup>
 
   <ItemGroup>
