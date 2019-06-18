@@ -26,8 +26,9 @@ namespace EasyCloudTest.Services.Tokens
             });
 
             // Act
-            var token1 = await Get<CachedAccessTokenProvider>().GetAccessTokenAsync(ExpectedKey);
-            var token2 = await Get<CachedAccessTokenProvider>().GetAccessTokenAsync(ExpectedKey);
+            var cachedProvider = GetCachedProvider();
+            var token1 = await cachedProvider.GetAccessTokenAsync(ExpectedKey);
+            var token2 = await cachedProvider.GetAccessTokenAsync(ExpectedKey);
 
             // Assert
             token1.ShouldBe(ExpectedToken);
@@ -53,9 +54,10 @@ namespace EasyCloudTest.Services.Tokens
             timeProvider.GetTime().Returns(DateTime.Now.AddDays(-1));
 
             // Act
-            var token1 = await Get<CachedAccessTokenProvider>().GetAccessTokenAsync(ExpectedKey);
+            var cachedProvider = GetCachedProvider();
+            var token1 = await cachedProvider.GetAccessTokenAsync(ExpectedKey);
             timeProvider.GetTime().Returns(DateTime.Now);
-            var token2 = await Get<CachedAccessTokenProvider>().GetAccessTokenAsync(ExpectedKey);
+            var token2 = await cachedProvider.GetAccessTokenAsync(ExpectedKey);
 
             // Assert
             token1.ShouldBe(ExpectedToken);
@@ -78,13 +80,16 @@ namespace EasyCloudTest.Services.Tokens
             });
 
             // Act
-            var token1 = await Get<CachedAccessTokenProvider>().GetAccessTokenAsync("key1");
-            var token2 = await Get<CachedAccessTokenProvider>().GetAccessTokenAsync("key2");
+            var cachedProvider = GetCachedProvider();
+            var token1 = await cachedProvider.GetAccessTokenAsync("key1");
+            var token2 = await cachedProvider.GetAccessTokenAsync("key2");
 
             // Assert
             token1.ShouldBe(ExpectedToken);
             token2.ShouldBe(ExpectedToken);
             callCount.ShouldBe(2);
         }
+
+        private CachedAccessTokenProvider GetCachedProvider() => new CachedAccessTokenProvider(Get<IAccessTokenProvider>(), Get<ITimeProvider>());
     }
 }
