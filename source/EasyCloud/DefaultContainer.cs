@@ -1,4 +1,5 @@
 ﻿using EasyCloud.Services;
+using EasyCloud.Services.TextToSpeech;
 using EasyCloud.Services.Tokens;
 using EasyCloud.Time;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,6 +25,8 @@ namespace EasyCloud
         private static IServiceCollection GetServices() => new ServiceCollection()
             .AddSingleton<IAccessTokenProviderFactory, AccessTokenProviderFactory>()
             .AddTransient<ICognitiveServiceFactory, CognitiveServiceFactory>()
+            .AddTransient<ISpeechAudioGetter, SpeechAudioGetter>()
+            .AddTransient<ITextToSpeechConverter, TextToSpeechConverter>()
             .AddTransient<ITimeProvider, TimeProvider>();
     }
 }

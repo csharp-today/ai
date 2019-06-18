@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using EasyCloud.Services.TextToSpeech;
+using System.Threading.Tasks;
 
 namespace EasyCloud.Services
 {
@@ -6,5 +7,7 @@ namespace EasyCloud.Services
     {
         Region Region { get; }
         Task<string> GetAccessTokenAsync();
+        Task<byte[]> TextToSpeech(Voice voice, string text);
+        Task<byte[]> TextToSpeech(Voice voice, string text, Audio audio);
     }
 }
