@@ -11,7 +11,7 @@ namespace EasyCloud.Services.Tokens
         private readonly IDictionary<string, (string token, DateTime expiration)> _cache = new Dictionary<string, (string, DateTime)>();
         private readonly ITimeProvider _timeProvider;
 
-        public CachedAccessTokenProvider(IAccessTokenProvider baseProvider, ITimeProvider timeProvider) =>
+        internal CachedAccessTokenProvider(IAccessTokenProvider baseProvider, ITimeProvider timeProvider) =>
             (_accessTokenProvider, _timeProvider) = (baseProvider, timeProvider);
 
         public async Task<string> GetAccessTokenAsync(string key)

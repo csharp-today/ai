@@ -11,7 +11,7 @@ namespace EasyCloud.Services
 
         public Region Region { get; }
 
-        public CognitiveService(IAccessTokenProviderFactory accessTokenProviderFactory, Region region, string key)
+        internal CognitiveService(IAccessTokenProviderFactory accessTokenProviderFactory, Region region, string key)
         {
             (Region, _key) = (region, key);
             _cachedAccessTokenProvider = new Lazy<ICachedAccessTokenProvider>(() =>

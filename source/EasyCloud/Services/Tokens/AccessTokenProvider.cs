@@ -7,7 +7,7 @@ namespace EasyCloud.Services.Tokens
     {
         private readonly string _url;
 
-        public AccessTokenProvider(Region region) =>
+        internal AccessTokenProvider(Region region) =>
             _url = $"https://{region.ToString().ToLower()}.api.cognitive.microsoft.com/sts/v1.0/issueToken";
 
         public async Task<string> GetAccessTokenAsync(string key)
