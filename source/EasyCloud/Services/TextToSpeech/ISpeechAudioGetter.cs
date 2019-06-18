@@ -4,6 +4,6 @@ namespace EasyCloud.Services.TextToSpeech
 {
     public interface ISpeechAudioGetter
     {
-        Task<byte[]> GetSpeechAudio(string accessToken, SpeechSynthesisMarkupLanguage ssml, Audio audio);
+        Task<byte[]> GetSpeechAudioAsync(Region region, string accessToken, SpeechSynthesisMarkupLanguage ssml, Audio audio);
     }
 }
